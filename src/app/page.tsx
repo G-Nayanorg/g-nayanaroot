@@ -1,65 +1,177 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import HeroSection from "@/components/Hero/hero-section";
+import AiSolutions from "@/components/AIsolutions/ai-soultion";
+import EfficencySection from "@/components/Efficiency/Efficiency";
+import UseCaseSection from "@/components/UseCases/UseCases";
+import Image from "next/image";
+import Logo from "../../public/Gnayanalogo.png";
+
+// Define types for our SPA sections
+type Section = "home" | "AI-Solutions" | "efficiency" | "usecases";
+
+const Home = () => {
+  const [activeSection, setActiveSection] = useState<Section>("home");
+  const pathname = usePathname();
+
+  // Update active section based on URL
+  useEffect(() => {
+    const path = pathname ?? "";
+    const p = path.toLowerCase();
+
+    if (p.includes("ai-solutions") || p.endsWith("/ai-solutions")) {
+      setActiveSection("AI-Solutions");
+    } else if (p.includes("efficiency") || p.endsWith("/efficiency")) {
+      setActiveSection("efficiency");
+    } else if (p.includes("usecases") || p.endsWith("/usecases")) {
+      setActiveSection("usecases");
+    } else {
+      setActiveSection("home");
+    }
+  }, [pathname]);
+
+  // Scroll to section when navigating
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setActiveSection(sectionId as Section);
+    }
+  };
+
+  // Navigation handler (SPA — updates state + URL without full reload)
+  const navigateToSection = (section: Section) => {
+    setActiveSection(section);
+
+    // Update URL without page reload (use lowercase route)
+    const route =
+      section === "home"
+        ? "/"
+        : `/${encodeURIComponent(section.toLowerCase())}`;
+    window.history.pushState({ section }, "", route);
+  };
+
+  // Helper to use on Link clicks to scroll to section
+  const handleNavClick =
+    (sectionId: string) =>
+    (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+      e.preventDefault();
+      scrollToSection(sectionId);
+    };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="min-h-screen bg-zinc-50 dark:bg-black font-sans">
+      {/* Navigation Bar */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 shadow-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16">
+            <div className="flex items-center">
+              <Image src={Logo} width={64} height={64} alt="logo" />
+            </div>
+            <div className="flex items-center space-x-4">
+              <Link
+                href="#home"
+                className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  activeSection === "home"
+                    ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-white"
+                    : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                }`}
+                onClick={handleNavClick("home")}
+              >
+                Home
+              </Link>
+              <Link
+                href="#AI-Solutions"
+                onClick={handleNavClick("AI-Solutions")}
+                className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  activeSection === "AI-Solutions"
+                    ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-white"
+                    : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                }`}
+              >
+                AI Solutions
+              </Link>
+              <Link
+                href="#efficiency"
+                onClick={handleNavClick("efficiency")}
+                className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  activeSection === "efficiency"
+                    ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-white"
+                    : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                }`}
+              >
+                Efficiency
+              </Link>
+              <Link
+                href="#usecases"
+                onClick={handleNavClick("usecases")}
+                className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  activeSection === "usecases"
+                    ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-white"
+                    : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+                }`}
+              >
+                Use Cases
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <div className="pt-16">
+        {/* Home (Hero) Section */}
+        <section id="home" className="flex items-center justify-center py-2">
+          <div className="w-full max-w-7xl px-4">
+            <HeroSection />
+          </div>
+        </section>
+
+
+        {/* AI-Solutions Section */}
+        <section
+          id="AI-Solutions"
+          className="flex items-center justify-center py-2 bg-gray-50 dark:bg-gray-800"
+        >
+          <div className="w-full max-w-7xl px-4">
+            <AiSolutions />
+          </div>
+        </section>
+
+        {/* Efficiency Section */}
+        <section
+          id="efficiency"
+          className="flex items-center justify-center py-2"
+        >
+          <div className="w-full max-w-7xl px-4">
+            <EfficencySection />
+          </div>
+        </section>
+
+        {/* Use Cases Section */}
+        <section
+          id="usecases"
+          className="flex items-center justify-center py-2 bg-gray-50 dark:bg-gray-800"
+        >
+          <div className="w-full max-w-7xl px-4">
+            <UseCaseSection />
+          </div>
+        </section>
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-white dark:bg-gray-900 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-gray-600 dark:text-gray-400">
+            &copy; {new Date().getFullYear()} G-Nayana. All rights reserved.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </footer>
     </div>
   );
-}
+};
+
+export default Home;
