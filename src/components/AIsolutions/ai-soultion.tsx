@@ -157,7 +157,7 @@ export default function AiSolutions({ solutions = aiSolutionsData }: AiSolutions
               ) : solution.id === "2" ? (
                 <div className="w-full h-64 lg:h-80 flex items-center justify-center">
                   <Image
-                    src="/Eyeimages/Glaucoma/left.png"
+                    src="/Eyeimages/Glaucoma/Glaucoma.jpg"
                     alt="Glaucoma Example - Left Eye"
                     className="w-full h-full object-contain rounded-lg"
                     width={600}

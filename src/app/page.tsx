@@ -7,6 +7,7 @@ import HeroSection from "@/components/Hero/hero-section";
 import AiSolutions from "@/components/AIsolutions/ai-soultion";
 import EfficencySection from "@/components/Efficiency/Efficiency";
 import UseCaseSection from "@/components/UseCases/UseCases";
+import Footer from "@/components/Layout/footer";
 import Image from "next/image";
 import Logo from "../../public/Gnayanalogo.png";
 
@@ -124,7 +125,7 @@ const Home = () => {
       {/* Main Content */}
       <div className="pt-16">
         {/* Home (Hero) Section */}
-        <section id="home" className="flex items-center justify-center py-2">
+        <section id="home" className="flex items-center justify-center py-14 scroll-mt-16">
           <div className="w-full max-w-7xl px-4">
             <HeroSection />
           </div>
@@ -134,7 +135,7 @@ const Home = () => {
         {/* AI-Solutions Section */}
         <section
           id="AI-Solutions"
-          className="flex items-center justify-center py-2 bg-gray-50 dark:bg-gray-800"
+          className="flex items-center justify-center py-2 bg-gray-50 dark:bg-gray-800 scroll-mt-16"
         >
           <div className="w-full max-w-7xl px-4">
             <AiSolutions />
@@ -144,7 +145,7 @@ const Home = () => {
         {/* Efficiency Section */}
         <section
           id="efficiency"
-          className="flex items-center justify-center py-2"
+          className="flex items-center justify-center py-2 scroll-mt-16"
         >
           <div className="w-full max-w-7xl px-4">
             <EfficencySection />
@@ -154,7 +155,7 @@ const Home = () => {
         {/* Use Cases Section */}
         <section
           id="usecases"
-          className="flex items-center justify-center py-2 bg-gray-50 dark:bg-gray-800"
+          className="flex items-center justify-center py-2 bg-gray-50 dark:bg-gray-800 scroll-mt-16"
         >
           <div className="w-full max-w-7xl px-4">
             <UseCaseSection />
@@ -162,14 +163,7 @@ const Home = () => {
         </section>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-white dark:bg-gray-900 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-600 dark:text-gray-400">
-            &copy; {new Date().getFullYear()} G-Nayana. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

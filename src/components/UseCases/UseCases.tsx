@@ -58,14 +58,14 @@ const UseCaseSection = () => {
             outcomes, increase efficiency, and expand access to quality eye
             care.
           </p>
-          {/* <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            {/* <Button>
               <Link href="/register-patient">Get Started Today</Link>
-            </Button>
+            </Button> */}
             <Button variant="outline">
-              <Link href="/contact">Schedule a Demo</Link>
+              <Link href="https://iscstech.com/#contact" target="/" className=" text-blue-600 font-semibold hover:text-blue-800 transition-colors">Schedule a Demo</Link>
             </Button>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

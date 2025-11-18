@@ -8,7 +8,7 @@ const HeroSection = () => {
     <div className="text-center">
       <div className="mb-20 w-full max-w-7xl px-4">
         <div className="relative z-1 max-w-248 mx-auto text-center mb-8">
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 text-blue-900">
+          <h1 id="hero-title" className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 text-blue-900">
             <span className="inline-block relative">
               G-NAYANA{" "}
               <svg
@@ -49,17 +49,17 @@ const HeroSection = () => {
           {/* <Button href="https://retinopathy-dashboard.vercel.app/">Get started</Button> */}
         </div>
 
-        <div className="mb-8">
+        {/* <div className="mb-8">
           <GNayanaBot />
-        </div>
+        </div> */}
 
         <div className="flex justify-center gap-4 flex-wrap">
-          <Button variant="default">
-            <Link href="/diabetic-retinopathy">
+          <Button >
+            <Link href="https://g-nayana.in/" target="/">
               Explore Diabetic Retinopathy
             </Link>
           </Button>
-          <Button variant="outline">
+          <Button>
             <Link href="/glaucoma">Explore Glaucoma Detection</Link>
           </Button>
         </div>
