@@ -1,12 +1,12 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import GNayanaBot from "@/components/GNayana/GNayanaBot";
+import LogoCarousel from "./LogoCarousel";
 
 const HeroSection = () => {
   return (
     <div className="text-center">
-      <div className="mb-20 w-full max-w-7xl px-4">
+      <div className="w-full max-w-7xl px-4">
         <div className="relative z-1 max-w-248 mx-auto text-center mb-8">
           <h1 id="hero-title" className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 text-blue-900">
             <span className="inline-block relative">
@@ -55,13 +55,23 @@ const HeroSection = () => {
 
         <div className="flex justify-center gap-4 flex-wrap">
           <Button >
-            <Link href="https://g-nayana.in/" target="/">
+            <Link href="https://g-nayanaroot.vercel.app/" target="/">
               Explore Diabetic Retinopathy
             </Link>
           </Button>
           <Button>
-            <Link href="/glaucoma">Explore Glaucoma Detection</Link>
+            <Link href="https://glaucoma-frontend-wrsx.vercel.app/" target="/">Explore Glaucoma Detection</Link>
           </Button>
+        </div>
+      </div>
+
+      {/* Logo Carousel - Scrolling from right to left */}
+      <div className="mt-10 max-w-7xl mx-auto">
+        <div className="w-full overflow-hidden py-4 bg-blue-50 rounded-lg border border-blue-100" style={{ maxHeight: '150px' }}>
+          <div className="flex-col items-center">
+            <span className="text-lg font-medium text-blue-800 mx-4 whitespace-nowrap">Trusted by leading healthcare providers:</span>
+            <LogoCarousel />
+          </div>
         </div>
       </div>
     </div>
