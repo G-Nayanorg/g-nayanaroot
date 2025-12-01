@@ -26,7 +26,7 @@ const LogoCarousel = () => {
               alt={logo.alt}
               width={100}
               height={40}
-              className="object-contain max-h-10"
+              className="object-contain max-h-10 w-auto"
             />
           </div>
         ))}

@@ -9,7 +9,7 @@ import EfficencySection from "@/components/Efficiency/Efficiency";
 import UseCaseSection from "@/components/UseCases/UseCases";
 import Footer from "@/components/Layout/footer";
 import Image from "next/image";
-import Logo from "../../public/Gnayanalogo.png";
+import Logo from "../../public/Gnayanalogo.svg";
 
 // Define types for our SPA sections
 type Section = "home" | "AI-Solutions" | "efficiency" | "usecases";
@@ -70,7 +70,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-              <Image src={Logo} width={64} height={64} alt="logo" />
+              <Image src={Logo} width={150} height={83} className="w-auto h-10 md:h-14" alt="logo" />
             </div>
             <div className="flex items-center space-x-4">
               <Link
