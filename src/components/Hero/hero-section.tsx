@@ -5,16 +5,16 @@ import LogoCarousel from "./LogoCarousel";
 
 const HeroSection = () => {
   return (
-    <div className="text-center">
-      <div className="w-full max-w-7xl px-4">
-        <div className="relative z-1 max-w-248 mx-auto text-center mb-8">
-          <h1 id="hero-title" className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 text-blue-900">
+    <div className="text-center px-4">
+      <div className="w-full max-w-7xl mx-auto">
+        <div className="relative z-1 max-w-4xl mx-auto text-center mb-8">
+          <h1 id="hero-title" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 text-blue-900">
             <span className="inline-block relative">
               G-NAYANA{" "}
               <svg
                 viewBox="0 0 624 28"
                 fill="none"
-                className="absolute top-full left-0 w-full xl:-mt-2"
+                className="absolute top-full left-0 w-full sm:w-[calc(100%+1rem)] sm:left-[-0.5rem] xl:-mt-2"
               >
                 <defs>
                   <linearGradient
@@ -32,16 +32,17 @@ const HeroSection = () => {
                 <path
                   d="M3 25C142.5 3.5 290.5 3.5 621 25"
                   stroke="url(#threeColorGradient)"
-                  strokeWidth="6"
+                  strokeWidth="4"
+                  className="sm:stroke-[6px]"
                   strokeLinecap="round"
                 />
               </svg>
             </span>
           </h1>
-          <h6 className="text-2xl md:text-2xl lg:text-2xl mb-6 text-blue-900">
+          <h6 className="text-xl sm:text-2xl md:text-3xl mb-4 sm:mb-6 text-blue-900">
             AI-Powered Eye Care
           </h6>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto text-blue-900 mb-8">
+          <p className="text-base sm:text-lg md:text-xl max-w-2xl sm:max-w-3xl mx-auto text-blue-900 mb-6 sm:mb-8">
             Advanced AI solutions for early detection and screening of
             vision-threatening eye diseases, bringing expert-level diagnostics
             to primary care settings.
@@ -53,23 +54,23 @@ const HeroSection = () => {
           <GNayanaBot />
         </div> */}
 
-        <div className="flex justify-center gap-4 flex-wrap">
-          <Button >
-            <Link href="https://g-nayanaroot.vercel.app/" target="/">
+        <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 flex-wrap items-center">
+          <Button size="lg" className="w-full sm:w-auto">
+            <Link href="https://g-nayanaroot.vercel.app/" target="_blank">
               Explore Diabetic Retinopathy
             </Link>
           </Button>
-          <Button>
-            <Link href="https://glaucoma-frontend-wrsx.vercel.app/" target="/">Explore Glaucoma Detection</Link>
+          <Button size="lg" className="w-full sm:w-auto">
+            <Link href="https://glaucoma-frontend-wrsx.vercel.app/" target="_blank">Explore Glaucoma Detection</Link>
           </Button>
         </div>
       </div>
 
       {/* Logo Carousel - Scrolling from right to left */}
-      <div className="mt-10 max-w-7xl mx-auto">
-        <div className="w-full overflow-hidden py-4 bg-blue-50 rounded-lg border border-blue-100" style={{ maxHeight: '150px' }}>
-          <div className="flex-col items-center">
-            <span className="text-lg font-medium text-blue-800 mx-4 whitespace-nowrap">Trusted by leading healthcare providers:</span>
+      <div className="mt-10 md:mt-16 max-w-6xl lg:max-w-7xl mx-auto px-4">
+        <div className="w-full overflow-hidden py-4 bg-blue-50 rounded-lg border border-blue-100">
+          <div className="flex flex-col items-center">
+            <span className="text-base sm:text-lg md:text-xl font-medium text-blue-800 mb-2">Trusted by leading healthcare providers:</span>
             <LogoCarousel />
           </div>
         </div>

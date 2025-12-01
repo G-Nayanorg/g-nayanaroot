@@ -1,38 +1,45 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import HeroSection from "@/components/Hero/hero-section";
 import AiSolutions from "@/components/AIsolutions/ai-soultion";
 import EfficencySection from "@/components/Efficiency/Efficiency";
 import UseCaseSection from "@/components/UseCases/UseCases";
 import Footer from "@/components/Layout/footer";
-import Image from "next/image";
-import Logo from "../../public/Gnayanalogo.svg";
+import Header from "@/components/Layout/Header";
 
 // Define types for our SPA sections
 type Section = "home" | "AI-Solutions" | "efficiency" | "usecases";
 
 const Home = () => {
   const [activeSection, setActiveSection] = useState<Section>("home");
-  const pathname = usePathname();
 
   // Update active section based on URL
   useEffect(() => {
-    const path = pathname ?? "";
-    const p = path.toLowerCase();
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
 
-    if (p.includes("ai-solutions") || p.endsWith("/ai-solutions")) {
-      setActiveSection("AI-Solutions");
-    } else if (p.includes("efficiency") || p.endsWith("/efficiency")) {
-      setActiveSection("efficiency");
-    } else if (p.includes("usecases") || p.endsWith("/usecases")) {
-      setActiveSection("usecases");
-    } else {
-      setActiveSection("home");
-    }
-  }, [pathname]);
+      if (hash === 'AI-Solutions' || hash === 'ai-solutions') {
+        setActiveSection("AI-Solutions");
+      } else if (hash === 'efficiency') {
+        setActiveSection("efficiency");
+      } else if (hash === 'usecases') {
+        setActiveSection("usecases");
+      } else {
+        setActiveSection("home");
+      }
+    };
+
+    // Initial check
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
 
   // Scroll to section when navigating
   const scrollToSection = (sectionId: string) => {
@@ -43,84 +50,9 @@ const Home = () => {
     }
   };
 
-  // Navigation handler (SPA — updates state + URL without full reload)
-  const navigateToSection = (section: Section) => {
-    setActiveSection(section);
-
-    // Update URL without page reload (use lowercase route)
-    const route =
-      section === "home"
-        ? "/"
-        : `/${encodeURIComponent(section.toLowerCase())}`;
-    window.history.pushState({ section }, "", route);
-  };
-
-  // Helper to use on Link clicks to scroll to section
-  const handleNavClick =
-    (sectionId: string) =>
-    (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-      e.preventDefault();
-      scrollToSection(sectionId);
-    };
-
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black font-sans">
-      {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center">
-              <Image src={Logo} width={150} height={83} className="w-auto h-10 md:h-14" alt="logo" />
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link
-                href="#home"
-                className={`px-3 py-2 rounded-md text-sm font-medium ${
-                  activeSection === "home"
-                    ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-white"
-                    : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                }`}
-                onClick={handleNavClick("home")}
-              >
-                Home
-              </Link>
-              <Link
-                href="#AI-Solutions"
-                onClick={handleNavClick("AI-Solutions")}
-                className={`px-3 py-2 rounded-md text-sm font-medium ${
-                  activeSection === "AI-Solutions"
-                    ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-white"
-                    : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                }`}
-              >
-                AI Solutions
-              </Link>
-              <Link
-                href="#efficiency"
-                onClick={handleNavClick("efficiency")}
-                className={`px-3 py-2 rounded-md text-sm font-medium ${
-                  activeSection === "efficiency"
-                    ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-white"
-                    : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                }`}
-              >
-                Efficiency
-              </Link>
-              <Link
-                href="#usecases"
-                onClick={handleNavClick("usecases")}
-                className={`px-3 py-2 rounded-md text-sm font-medium ${
-                  activeSection === "usecases"
-                    ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-white"
-                    : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
-                }`}
-              >
-                Use Cases
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Header activeSection={activeSection} scrollToSection={scrollToSection} />
 
       {/* Main Content */}
       <div className="pt-16">
