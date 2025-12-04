@@ -15,7 +15,7 @@ export const aiSolutionsData = [
     description:
       "Early detection of diabetic retinopathy through advanced AI analysis of retinal images, preventing vision loss in diabetic patients.",
     icon: benefitIcon1,
-    route: "/diabetic-retinopathy",
+    route: "https://g-nayanaroot.vercel.app/",
     color: "from-blue-500 to-cyan-500",
     stats: [
       { label: "Accuracy", value: "98.5%" },
@@ -28,7 +28,7 @@ export const aiSolutionsData = [
     description:
       "Comprehensive optic nerve assessment for early glaucoma detection and monitoring of disease progression.",
     icon: benefitIcon2,
-    route: "/glaucoma",
+    route: "https://glaucoma-frontend.vercel.app/",
     color: "from-purple-500 to-indigo-500",
     stats: [
       { label: "Accuracy", value: "96.7%" },
@@ -120,6 +120,7 @@ export default function AiSolutions({ solutions = aiSolutionsData }: AiSolutions
                   <Button variant="outline" asChild>
                     <Link
                       href={solution.route}
+                      target="/"
                       className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors"
                     >
                       Learn More

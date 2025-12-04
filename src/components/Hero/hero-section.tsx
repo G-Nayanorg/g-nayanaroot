@@ -61,7 +61,7 @@ const HeroSection = () => {
             </Link>
           </Button>
           <Button size="lg" className="w-full sm:w-auto">
-            <Link href="https://glaucoma-frontend-wrsx.vercel.app/" target="_blank">Explore Glaucoma Detection</Link>
+            <Link href="https://glaucoma-frontend.vercel.app/" target="_blank">Explore Glaucoma Detection</Link>
           </Button>
         </div>
       </div>
