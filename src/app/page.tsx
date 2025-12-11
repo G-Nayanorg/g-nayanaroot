@@ -17,13 +17,13 @@ const Home = () => {
   // Update active section based on URL
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '');
+      const hash = window.location.hash.replace("#", "");
 
-      if (hash === 'AI-Solutions' || hash === 'ai-solutions') {
+      if (hash === "AI-Solutions" || hash === "ai-solutions") {
         setActiveSection("AI-Solutions");
-      } else if (hash === 'efficiency') {
+      } else if (hash === "efficiency") {
         setActiveSection("efficiency");
-      } else if (hash === 'usecases') {
+      } else if (hash === "usecases") {
         setActiveSection("usecases");
       } else {
         setActiveSection("home");
@@ -34,10 +34,10 @@ const Home = () => {
     handleHashChange();
 
     // Listen for hash changes
-    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener("hashchange", handleHashChange);
 
     return () => {
-      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener("hashchange", handleHashChange);
     };
   }, []);
 
@@ -57,12 +57,14 @@ const Home = () => {
       {/* Main Content */}
       <div className="pt-16">
         {/* Home (Hero) Section */}
-        <section id="home" className="flex items-center justify-center py-14 scroll-mt-16">
+        <section
+          id="home"
+          className="flex items-center justify-center py-14 scroll-mt-16"
+        >
           <div className="w-full max-w-7xl px-4">
             <HeroSection />
           </div>
         </section>
-
 
         {/* AI-Solutions Section */}
         <section

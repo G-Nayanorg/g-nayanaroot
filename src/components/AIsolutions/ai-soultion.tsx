@@ -146,11 +146,11 @@ export default function AiSolutions({ solutions = aiSolutionsData }: AiSolutions
             {/* Image Content (right for first item, left for second) */}
             <div className="lg:w-1/2 flex items-center justify-center mt-6 lg:mt-0">
               {solution.id === "1" ? (
-                <div className="w-full h-64 lg:h-80 flex items-center justify-center">
+                <div className="w-full h-64 lg:h-80 flex items-center justify-center rounded-lg">
                   <Image
                     src="/Eyeimages/Diabetic/right_2.jpg"
                     alt="Diabetic Retinopathy Example - Right Eye"
-                    className="w-full h-full object-contain rounded-lg"
+                    className="w-fit h-full rounded-4xl"
                     width={600}
                     height={400}
                   />
@@ -160,7 +160,7 @@ export default function AiSolutions({ solutions = aiSolutionsData }: AiSolutions
                   <Image
                     src="/Eyeimages/Glaucoma/Glaucoma.jpg"
                     alt="Glaucoma Example - Left Eye"
-                    className="w-full h-full object-contain rounded-lg"
+                    className="w-fit h-full rounded-4xl"
                     width={600}
                     height={400}
                   />

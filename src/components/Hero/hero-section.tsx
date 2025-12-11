@@ -8,7 +8,10 @@ const HeroSection = () => {
     <div className="text-center px-4">
       <div className="w-full max-w-7xl mx-auto">
         <div className="relative z-1 max-w-4xl mx-auto text-center mb-8">
-          <h1 id="hero-title" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 text-blue-900">
+          <h1
+            id="hero-title"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 text-blue-900"
+          >
             <span className="inline-block relative">
               G-NAYANA{" "}
               <svg
@@ -61,20 +64,22 @@ const HeroSection = () => {
             </Link>
           </Button>
           <Button size="lg" className="w-full sm:w-auto">
-            <Link href="https://glaucoma-frontend.vercel.app/" target="_blank">Explore Glaucoma Detection</Link>
+            <Link href="https://glaucoma-frontend.vercel.app/" target="_blank">
+              Explore Glaucoma Detection
+            </Link>
           </Button>
         </div>
       </div>
 
       {/* Logo Carousel - Scrolling from right to left */}
-      <div className="mt-10 md:mt-16 max-w-6xl lg:max-w-7xl mx-auto px-4">
+      {/* <div className="mt-10 md:mt-16 max-w-6xl lg:max-w-7xl mx-auto px-4">
         <div className="w-full overflow-hidden py-4 bg-blue-50 rounded-lg border border-blue-100">
           <div className="flex flex-col items-center">
             <span className="text-base sm:text-lg md:text-xl font-medium text-blue-800 mb-2">Trusted by leading healthcare providers:</span>
             <LogoCarousel />
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
