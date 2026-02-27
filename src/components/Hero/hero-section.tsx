@@ -59,7 +59,7 @@ const HeroSection = () => {
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 flex-wrap items-center">
           <Button size="lg" className="w-full sm:w-auto">
-            <Link href="https://g-nayanaroot.vercel.app/" target="_blank">
+            <Link href="https://devg-nayanain.vercel.app/" target="_blank">
               Explore Diabetic Retinopathy
             </Link>
           </Button>

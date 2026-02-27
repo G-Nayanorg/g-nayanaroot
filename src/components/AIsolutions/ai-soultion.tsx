@@ -15,7 +15,7 @@ export const aiSolutionsData = [
     description:
       "Early detection of diabetic retinopathy through advanced AI analysis of retinal images, preventing vision loss in diabetic patients.",
     icon: benefitIcon1,
-    route: "https://g-nayanaroot.vercel.app/",
+    route: "https://devg-nayanain.vercel.app/",
     color: "from-blue-500 to-cyan-500",
     stats: [
       { label: "Accuracy", value: "98.5%" },
