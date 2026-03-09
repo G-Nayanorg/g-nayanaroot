@@ -8,6 +8,8 @@ import UseCaseSection from "@/components/UseCases/UseCases";
 import Footer from "@/components/Layout/footer";
 import Header from "@/components/Layout/Header";
 
+import References from "@/components/Layout/References";
+
 // Define types for our SPA sections
 type Section = "home" | "AI-Solutions" | "efficiency" | "usecases";
 
@@ -97,6 +99,7 @@ const Home = () => {
         </section>
       </div>
 
+      <References />
       <Footer />
     </div>
   );
